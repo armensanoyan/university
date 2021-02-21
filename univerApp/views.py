@@ -61,6 +61,7 @@ def index(request):
 		return render(request, 'univerApp/main.html', content)
 
 
+@login_required(login_url='login/')
 def university(request, university_name):
 	try:
 		university = Universities.objects.get(name=university_name)
@@ -75,9 +76,6 @@ def university(request, university_name):
 		return redirect('index')
 
 
-@login_required(login_url='login/')
-def details(request):
-    return render(request, 'univerApp/details.html')
 
 def login(request):
     return render(request, 'univerApp/login.html')
@@ -107,3 +105,7 @@ def register(request):
     else:
         User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
         return HttpResponseRedirect('/')
+
+def	remove(request, university_name):
+	Universities.objects.filter(name=university_name).delete()
+	return redirect('index')
