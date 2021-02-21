@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>main</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  {% if user.is_authenticated %}
+  <div> 
+    {%if error%}{{error}}{%endif%}
+  </div> 
+  <a class="nav-link" href="/logout">
+    <h4 style="padding-top: 5px;" class="barText">Log out</h4>
+  </a>
+  <div class="text-center">
+
+    <!-- <span style="margin: auto;width: 50%;padding: 10px;">Please provide at least 2 subjects seperated by comma</span> -->
+    <form class="form-inline text-center" style="justify-content: center; margin: 40px !important;" action="" method="post">
+      {% csrf_token %}
+      <input name='name' class="form-control" id="Inputname1" aria-describedby="NameHelp" placeholder="Enter University name">
+      <input name='address' type="text" class="form-control" id="InputPassword1" placeholder="Enter University address">
+      <input name='subjects' type="text" class="form-control" id="InputPassword1" placeholder="Enter subjects">
+      <button style="width: 8%;" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+
+  {% if universities %}
+  <div class="container list-inline card text-center mx-auto" style="width: 50%;border: 0px;" >
+    {% for university in universities %}
+    <a href="university/{{university.name}}" class="list-group-item list-group-item-action disabled">
+      <div class="row" style="border: 0px;">
+      <div class="col-sm">
+        {{university.name}}
+      </div>
+      <div class="col-sm">
+        {{university.subjects}}
+      </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+{% else %}
+  <p>Please <a href="/login">Log in</a></p>
+{% endif %}
+</body>
+</html>

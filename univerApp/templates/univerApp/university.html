@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{university.name}}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+	<style>h2,h3,h4{color: rgb(136, 138, 138);}</style>
+	<button type="button" class="btn btn-outline-secondary"><a style="color: rgb(104, 106, 108);" href="/">back</a></button>
+	<button type="button" class="btn btn-outline-secondary"><a style="color: rgb(104, 106, 108);" href="/remove/{{university.name}}">Delete</a></button>
+	<div class="card container text-center mx-auto " style="margin: auto;width: 50%;padding: 10px;">
+		<div class="row list-inline" style="border: 0px;">
+			<span class="col-sm"><h2> name {{university.name}}</h2> </span>
+		</div>
+
+		<div class="row" style="border: 0px;">
+			<span class="col-sm"> <h3> address {{university.address}}</h3></span>
+		</div>
+
+		<div class="row" style="border: 0px;">
+			<span class="col-sm"><h4> subjects {{university.subjects}}</h4></span>
+		</div>
+	</div>
+</body>
+</html>
